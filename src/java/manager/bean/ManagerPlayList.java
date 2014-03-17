@@ -17,7 +17,7 @@ import session.PlaylistFacade;
 @ManagedBean(name = "ManagerPlayList")
 @RequestScoped
 public class ManagerPlayList implements Serializable {
-    
+
     @EJB
     private PlaylistFacade pf;
     private String name;
@@ -27,28 +27,28 @@ public class ManagerPlayList implements Serializable {
     private List<Playlist> playlists;
     private Playlist playlist;
     private List<Music> musicsPlaylist;
-    
+
     public ManagerPlayList() {
-        
+
     }
-    
+
     public List<Playlist> getPlaylists() {
-        this.playlists = pf.findByID(mu.getLoggedUser().getId_user());
+        //this.playlists = pf.findByID(mu.getLoggedUser().getId_user());
         return playlists;
     }
-    
+
     public void setPlaylists(List<Playlist> playlists) {
         this.playlists = playlists;
     }
-    
+
     public void setPlaylist(Playlist playlist) {
         this.playlist = playlist;
     }
-    
+
     public Playlist getPlaylist() {
         return playlist;
     }
-    
+
     public String createPlaylist() {
         if (pf.createPlaylist(name, mu.getLoggedUser()) == true) {
             this.playlists = pf.findByID(mu.getLoggedUser().getId_user());
@@ -56,13 +56,13 @@ public class ManagerPlayList implements Serializable {
         }
         return "Error";
     }
-    
+
     public String editPlaylist() {
         playlist.setCanEdit(true);
         pf.edit(playlist);
         return null;
     }
-    
+
     public String savePlayList() {
         //set "canEdit" of all employees to false 
         for (Playlist p : playlists) {
@@ -71,28 +71,28 @@ public class ManagerPlayList implements Serializable {
         }
         return null;
     }
-    
+
     public String deletePlaylist() {
         pf.remove(playlist);
         this.playlists.remove(playlist);
         return null;
     }
-    
+
     public String orderByNameAsc() {
         playlists = pf.orderByNameAsc(mu.getLoggedUser());
         return "listMyPlayLists";
     }
-    
+
     public String orderByNameDes() {
         playlists = pf.orderByNameDes(mu.getLoggedUser());
         return "listMyPlayLists";
     }
-    
+
     public String orderByDateAsc() {
         playlists = pf.orderByDateAsc(mu.getLoggedUser());
         return "listMyPlayLists";
     }
-    
+
     public String orderByDateDes() {
         playlists = pf.orderByDateDes(mu.getLoggedUser());
         return "listMyPlayLists";
@@ -146,38 +146,38 @@ public class ManagerPlayList implements Serializable {
         pf.edit(playlist);
         return null;
     }
-    
+
     public PlaylistFacade getPf() {
         return pf;
     }
-    
+
     public void setPf(PlaylistFacade pf) {
         this.pf = pf;
     }
-    
+
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public ManagerUser getMu() {
         return mu;
     }
-    
+
     public List<Music> getMusicsPlaylist() {
         return musicsPlaylist;
     }
-    
+
     public void setMusicsPlaylist(List<Music> musicsPlaylist) {
         this.musicsPlaylist = musicsPlaylist;
     }
-    
+
     public void setMu(ManagerUser mu) {
         this.mu = mu;
         this.playlists = pf.findByID(mu.getLoggedUser().getId_user());
     }
-    
+
 }
