@@ -19,7 +19,7 @@ public class ManagerMusic implements Serializable {
 
     @EJB
     private MusicFacade mf;
-    String searchTerm;
+    private String searchTerm;
     private String title;
     private String artist;
     private String erro;

@@ -7,7 +7,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import session.PlaylistFacade;
 
 /**
@@ -15,7 +15,7 @@ import session.PlaylistFacade;
  * @author Carlos
  */
 @ManagedBean(name = "ManagerPlayList")
-@SessionScoped
+@RequestScoped
 public class ManagerPlayList implements Serializable {
     
     @EJB
@@ -23,7 +23,7 @@ public class ManagerPlayList implements Serializable {
     private String name;
     @ManagedProperty(value = "#{ManagerUser}")
     private ManagerUser mu;
-    private boolean order = true;
+//    private boolean order = true;
     private List<Playlist> playlists;
     private Playlist playlist;
     private List<Music> musicsPlaylist;
