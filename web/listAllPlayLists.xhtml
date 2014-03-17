@@ -62,6 +62,10 @@
                                         #{playlist.getDateString()}
                                 </h:column>
                                 <h:column>
+                                    <f:facet name="header">Musics</f:facet>
+                                        #{playlist.musics.size()}
+                                </h:column>
+                                <h:column>
                                     <f:facet name="header">Open</f:facet>
                                     <h:commandButton style="background-color: #f8fc64;font: bold 30px Arial, Helvetica, sans-serif" value="Open" action="#{ManagerPlayList.openPlaylist()}">
                                         <f:setPropertyActionListener target="#{ManagerPlayList.playlist}" value="#{playlist}" />

@@ -69,11 +69,11 @@ public class ManagerUser implements Serializable {
     public String changeDataUser() {
         setName(loggedUser.getName());
         setEmail(loggedUser.getEmail());
-        if (pass.isEmpty()) {
+        if (pass.isEmpty() && uf.validaEmail(email) && uf.validaNome(name)) {
             uf.editUser(loggedUser);
             error = "";
             return "loginTrue";
-        } else if (!pass.isEmpty() && pass.equals(pass1)) {
+        } else if (!pass.isEmpty() && uf.validaEmail(email) && (pass.equals(pass1)) && uf.validaNome(name) && uf.validaPass(pass)) {
             loggedUser.setPassword(uf.chave(pass));//faz encriptacao da password
             uf.editUser(loggedUser);
             error = "";

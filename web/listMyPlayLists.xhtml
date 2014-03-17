@@ -67,6 +67,13 @@
                                     #{playlist.getDateString()}
                                 </h:column>
                                 <h:column>
+                                    <f:facet name="header">Musics
+                                        <h:commandButton  image="resources/images/up.png" action="#{ManagerPlayList.orderByDateAsc()}"></h:commandButton>
+                                        <h:commandButton image="resources/images/down.png" action="#{ManagerPlayList.orderByDateDes()}"></h:commandButton>
+                                    </f:facet>
+                                    #{playlist.musics.size()}
+                                </h:column>
+                                <h:column>
                                     <f:facet name="header">Edit</f:facet>
                                     <h:commandButton style="background-color: #f8fc64;font: bold 30px Arial, Helvetica, sans-serif" value="Edit" action="#{ManagerPlayList.editPlaylist}" rendered="#{not playlist.canEdit}">
                                         <f:setPropertyActionListener target="#{ManagerPlayList.playlist}" value="#{playlist}" />
