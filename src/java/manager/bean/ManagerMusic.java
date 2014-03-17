@@ -47,16 +47,17 @@ public class ManagerMusic implements Serializable {
 
     public String editMusic() {
         music.setCanEdit(true);
-        return null;
+        mf.edit(music);
+        return "listMyMusics";
     }
 
     public String saveMusic() {
-        //set "canEdit" of all employees to false 
-        for (Music music : musics) {
-            music.setCanEdit(false);
-            mf.edit(music);
+        //set "canEdit" of all musics to false 
+        for (Music m : musics) {
+            m.setCanEdit(false);
+            mf.edit(m);
         }
-        return null;
+        return "listMyMusics";
     }
 
     public String deleteMusic() {
