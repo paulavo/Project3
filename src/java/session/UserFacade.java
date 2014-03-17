@@ -1,11 +1,8 @@
 package session;
 
-import entities.Music;
-import entities.Playlist;
 import entities.User;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -125,36 +122,6 @@ public class UserFacade extends AbstractFacade<User> {
             }
         }
         return false;
-    }
-
-    /**
-     * Faz pesquise de músicas do user
-     *
-     * @param playlist
-     */
-    public List<Music> findMusicsToDelete(User user) {
-        TypedQuery<Music> musicsDelete = em.createNamedQuery("Music.getMusicByUser", Music.class);
-        musicsDelete.setParameter("user", user);
-        try {
-            return musicsDelete.getResultList();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    /**
-     * Faz pesquise de playlists do user
-     *
-     * @param playlist
-     */
-    public List<Playlist> findPlaylistsToDelete(User user) {
-        TypedQuery<Playlist> playListDelete = em.createNamedQuery("Playlist.getMusicByUser", Playlist.class);
-        playListDelete.setParameter("user", user);
-        try {
-            return playListDelete.getResultList();
-        } catch (Exception e) {
-            return null;
-        }
     }
 
 }

@@ -1,11 +1,7 @@
 package manager.bean;
 
-import entities.Music;
-import entities.Playlist;
 import entities.User;
 import java.io.Serializable;
-import java.util.Iterator;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -98,21 +94,8 @@ public class ManagerUser implements Serializable {
      * @return
      */
     public String deleteUser() {
-        //Remover Music
-        List<Music> musicsToDelete = uf.findMusicsToDelete(loggedUser);
-        Iterator itr = musicsToDelete.iterator();
-        while (itr.hasNext()) {
-            Object element = itr.next();
-            //mf.remove((Music) element);
-        }
-
-        //Remover Playlist
-        List<Playlist> playListsToDelete = uf.findPlaylistsToDelete(loggedUser);
-        for (Playlist playlist : playListsToDelete) {
-            //pf.remove(playlist);
-        }
         //Remover User;
-        //uf.remove(loggedUser);
+        uf.remove(loggedUser);
         return "index";
     }
 
