@@ -116,7 +116,7 @@ public class ManagerPlayList implements Serializable {
     public String openPlaylist() {
         //Carregar Músicas da PlayList
         this.musicsPlaylist = pf.findByPlaylist(playlist);
-        return "openMyPlayList";
+        return "openPlayList";
     }
 
     /**

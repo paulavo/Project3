@@ -110,7 +110,7 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
      * @param playlist
      */
     public List<Music> findByPlaylist(Playlist playlist) {
-        TypedQuery<Music> musicsPlaylist = em.createNamedQuery("Music.findMusicsPalylist", Music.class);
+        TypedQuery<Music> musicsPlaylist = em.createNamedQuery("Music.findMusicsPlaylist", Music.class);
         musicsPlaylist.setParameter("playlist", playlist);
         try {
             return musicsPlaylist.getResultList();
