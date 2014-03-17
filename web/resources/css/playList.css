@@ -1,0 +1,27 @@
+.playTable{   
+   border-collapse:collapse;
+   border:1px solid #000000;
+}
+
+.playTableHeader{
+   text-align:left;
+   background:none repeat scroll 0 0 #f89b09;
+   border-bottom:1px solid #000000;  
+   padding:2px;
+   font: bold 40px Arial, Helvetica, sans-serif;
+   width: 4000px;
+}
+
+.playTableOddRow{
+   text-align:left;
+   background:none repeat scroll 0 0 #f8ef0a;	
+   font: normal 30px Arial, Helvetica, sans-serif;
+   height: 35px;
+}
+
+.playTableEvenRow{
+   text-align:left;
+   background:none repeat scroll 0 0 #ffffff;
+   font: normal 30px Arial, Helvetica, sans-serif;
+   height: 35px;
+}
