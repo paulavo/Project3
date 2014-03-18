@@ -2,18 +2,18 @@ package manager.bean;
 
 import entities.User;
 import java.io.Serializable;
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.servlet.http.HttpSession;
 import session.UserFacade;
 
-@ManagedBean(name = "ManagerUser")
+@Named("ManagerUser")
 @SessionScoped
 public class ManagerUser implements Serializable {
 
-    @EJB
+    @Inject
     private UserFacade uf;
     private String email;
     private String pass;

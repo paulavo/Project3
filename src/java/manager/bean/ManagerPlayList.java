@@ -4,26 +4,24 @@ import entities.Music;
 import entities.Playlist;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import session.PlaylistFacade;
 
 /**
  *
  * @author Carlos
  */
-@ManagedBean(name = "ManagerPlayList")
+@Named("ManagerPlayList")
 @RequestScoped
 public class ManagerPlayList implements Serializable {
 
-    @EJB
+    @Inject
     private PlaylistFacade pf;
     private String name;
-    @ManagedProperty(value = "#{ManagerUser}")
+    @Inject
     private ManagerUser mu;
-//    private boolean order = true;
     private List<Playlist> playlists;
     private Playlist playlist;
     private List<Music> musicsPlaylist;
@@ -33,7 +31,9 @@ public class ManagerPlayList implements Serializable {
     }
 
     public List<Playlist> getPlaylists() {
-        //this.playlists = pf.findByID(mu.getLoggedUser().getId_user());
+        if (playlists == null) {
+            this.playlists = pf.findByID(mu.getLoggedUser().getId_user());
+        }
         return playlists;
     }
 
@@ -95,6 +95,11 @@ public class ManagerPlayList implements Serializable {
 
     public String orderByDateDes() {
         playlists = pf.orderByDateDes(mu.getLoggedUser());
+        return "listMyPlayLists";
+    }
+
+    public String orderByNumberAsc() {
+        playlists = pf.orderByNumberASC(mu.getLoggedUser());
         return "listMyPlayLists";
     }
 

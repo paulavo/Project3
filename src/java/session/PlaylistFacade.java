@@ -104,6 +104,16 @@ public class PlaylistFacade extends AbstractFacade<Playlist> {
         }
     }
 
+    public List<Playlist> orderByNumberASC(User user) {
+        TypedQuery<Playlist> q = em.createNamedQuery("Playlist.orderByNumberASC", Playlist.class);
+        q.setParameter("user", user);
+        try {
+            return q.getResultList();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
     /**
      * Faz pesquise de músicas da Playlist
      *

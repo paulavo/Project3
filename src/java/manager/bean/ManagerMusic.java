@@ -3,21 +3,20 @@ package manager.bean;
 import entities.Music;
 import java.io.Serializable;
 import java.util.List;
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import session.MusicFacade;
 
 /**
  *
  * @author Carlos
  */
-@ManagedBean(name = "ManagerMusic")
+@Named("ManagerMusic")
 @RequestScoped
 public class ManagerMusic implements Serializable {
 
-    @EJB
+    @Inject
     private MusicFacade mf;
     private String searchTerm;
     private String title;
@@ -27,7 +26,7 @@ public class ManagerMusic implements Serializable {
     private String year;
     private String path;
     private List<Music> result_music;
-    @ManagedProperty(value = "#{ManagerUser}")
+    @Inject
     private ManagerUser mu;
     private List<Music> musics;
     private Music music;
