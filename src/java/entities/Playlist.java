@@ -26,8 +26,7 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name = "Playlist.orderByNameDES", query = "SELECT p FROM Playlist p WHERE p.property = :user ORDER BY p.name DESC"),
     @NamedQuery(name = "Playlist.orderByDateASC", query = "SELECT p FROM Playlist p WHERE p.property = :user ORDER BY p.dateCreate ASC"),
     @NamedQuery(name = "Playlist.orderByDateDES", query = "SELECT p FROM Playlist p WHERE p.property = :user ORDER BY p.dateCreate DESC"),
-    @NamedQuery(name = "Playlist.getMusicByUser", query = "SELECT m FROM Playlist m WHERE m.property = :user"),
-    @NamedQuery(name = "Playlist.orderByNumberASC", query = "SELECT COUNT (p.musics) FROM Playlist p WHERE p.property = :user GROUP BY p.musics ORDER BY ASC")
+    @NamedQuery(name = "Playlist.getMusicByUser", query = "SELECT m FROM Playlist m WHERE m.property = :user")
 })
 
 public class Playlist implements Serializable {

@@ -109,6 +109,7 @@ public class ManagerPlayList implements Serializable {
      * @return
      */
     public String openMyPlaylist() {
+        mu.setPlaylist(playlist);
         //Carregar Músicas da PlayList
         this.musicsPlaylist = pf.findByPlaylist(playlist);
         return "openMyPlayList";
@@ -132,6 +133,7 @@ public class ManagerPlayList implements Serializable {
      * @return
      */
     public String addMusicPlaylist(Music music) {
+        this.playlist = mu.getPlaylist();
         playlist.getMusics().add(music);
         pf.edit(playlist);
         return "openMyPlayList";

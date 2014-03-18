@@ -1,5 +1,6 @@
 package manager.bean;
 
+import entities.Playlist;
 import entities.User;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
@@ -21,6 +22,7 @@ public class ManagerUser implements Serializable {
     private String error;
     private String name;
     private User loggedUser;
+    private Playlist playlist;
 
     /*
      * Constructor
@@ -157,6 +159,14 @@ public class ManagerUser implements Serializable {
 
     public String getPass1() {
         return pass1;
+    }
+
+    public Playlist getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(Playlist playlist) {
+        this.playlist = playlist;
     }
 
 }
